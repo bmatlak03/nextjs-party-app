@@ -1,7 +1,6 @@
 import { unstable_noStore as noStore } from "next/cache";
 import { sql } from "@vercel/postgres";
-
-import { Expense } from "./definitions";
+import { Expense } from "./actions";
 
 export async function fetchExpense() {
   noStore();
