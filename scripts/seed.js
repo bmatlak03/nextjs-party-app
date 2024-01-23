@@ -47,10 +47,9 @@ async function seedExpenses(client) {
     const createTable = await client.sql`
       CREATE TABLE IF NOT EXISTS expenses (
         id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-        user_id UUID NOT NULL REFERENCES users(id),
-        name VARCHAR(255) NOT NULL,
+        name STRING NOT NULL,
         amount INTEGER NOT NULL,
-        timestamp TIMESTAMP NOT NULL
+        date TIMESTAMP NOT NULL
       );
     `;
 
@@ -60,8 +59,8 @@ async function seedExpenses(client) {
     const insertedExpenses = await Promise.all(
       expenses.map((expense) => {
         return client.sql`
-        INSERT INTO expenses (user_id, name, amount, timestamp)
-        VALUES (${expense.user_id}, ${expense.name}, ${expense.amount}, ${expense.timestamp})
+        INSERT INTO expenses (name, amount, date)
+        VALUES (${expense.name}, ${expense.amount}, ${expense.date})
         ON CONFLICT (id) DO NOTHING;
       `;
       })
@@ -82,7 +81,7 @@ async function seedExpenses(client) {
 async function main() {
   const client = await db.connect();
 
-  await seedUsers(client);
+  // await seedUsers(client);
   await seedExpenses(client);
 
   await client.end();

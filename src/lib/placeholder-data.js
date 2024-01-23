@@ -9,9 +9,9 @@ const users = [
 
 const expenses = [
   {
-    user_id: users[0].id,
+    name: users[0].name,
     amount: 100,
-    timestamp: new Date().toISOString(),
+    date: new Date().toISOString(),
   },
 ];
 
