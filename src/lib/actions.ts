@@ -2,7 +2,6 @@
 
 import { sql } from "@vercel/postgres";
 import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
 import { z } from "zod";
 
 const ExpenseSchema = z.object({
@@ -29,7 +28,6 @@ export async function createExpense(formData: FormData) {
     VALUES (${name}, ${amount}, ${date})
     `;
     revalidatePath("/");
-    redirect("/");
   } catch (error) {
     return {
       message: "Database Error: Failed to Create Expense.",
