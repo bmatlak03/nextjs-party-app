@@ -1,4 +1,3 @@
-"use server";
 import { createExpense } from "@/lib/actions";
 
 export default async function ExpensesForm() {
