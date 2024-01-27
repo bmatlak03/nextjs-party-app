@@ -1,8 +1,10 @@
-import { fetchExpense } from "@/lib/data";
+import { Expense } from "@/lib/actions";
 import map from "lodash/map";
 
-export default async function ExpensesList() {
-  const expenses = await fetchExpense();
+type ExpensesListProps = {
+  expenses: Expense[];
+};
+export default async function ExpensesList({ expenses }: ExpensesListProps) {
   return (
     <div className="px-4 mt-4">
       <h2 className="text-2xl font-bold text-gray-800 text-center">Expenses</h2>
