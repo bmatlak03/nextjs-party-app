@@ -3,8 +3,8 @@ import { createExpense } from "@/lib/actions";
 export default async function ExpensesForm() {
   return (
     <form action={createExpense} className="px-4">
-      <div className="md:flex md:justify-center md:items-center mt-5">
-        <div className="md:w-2/5">
+      <div className="flex justify-center flex-col">
+        <div>
           <label className="block text-gray-700 text-sm font-bold mb-2">
             Name
           </label>
@@ -15,7 +15,7 @@ export default async function ExpensesForm() {
             placeholder="Name"
           />
         </div>
-        <div className="md:w-2/5">
+        <div className="mt-2">
           <label className="block text-gray-700 text-sm font-bold mb-2">
             Amount
           </label>
