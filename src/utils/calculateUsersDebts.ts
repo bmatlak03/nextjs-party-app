@@ -1,6 +1,6 @@
 import { Expense } from "@/lib/actions";
 
-type UserDebt = {
+export type UserDebt = {
   name: string;
   debts: {
     name: string;
